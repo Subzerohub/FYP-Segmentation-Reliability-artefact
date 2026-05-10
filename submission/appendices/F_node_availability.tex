@@ -1,0 +1,108 @@
+\chapter{Node Availability and Failure Resilience Tests}
+\label{ch:appendix-node}
+
+This appendix records the supplementary node-availability experiment conducted in addition to the primary test harness. The test examines what happens to both architectures when a critical service node (the web server) fails and is subsequently restored, and whether network isolation holds across the failure event.
+
+\section{Test Overview}
+
+The test proceeds in five stages for each topology:
+\begin{enumerate}[leftmargin=*]
+    \item Verify baseline web connectivity (student $\rightarrow$ web).
+    \item Stop the web server container.
+    \item Confirm that the web service is now unreachable.
+    \item Probe a second service (the database) from the student host during the web outage.
+    \item Restart the web server and confirm that the service is restored.
+\end{enumerate}
+
+The purpose of stage 4 is to determine whether a web-service failure exposes any additional attack surface to a student-zone host that would not be present during normal operation.
+
+\section{Flat Network: Node Failure Results}
+
+\begin{table}[H]
+\centering
+\caption[Flat network node failure results]{Flat network web-server failure test results.}
+\label{tab:node-flat}
+\begin{tabularx}{\textwidth}{l l X X}
+\toprule
+\textbf{Stage} & \textbf{Status} & \textbf{Result} & \textbf{Notes} \\
+\midrule
+Web connectivity (before failure) & PASS & Web accessible & student $\rightarrow$ 10.10.0.40:80 \\
+Stop web server container & PASS & Service stopped & Web becomes unreachable \\
+Web connectivity (after failure) & PASS & Web unreachable & Expected: service is down \\
+Database during web failure & PASS & \textbf{Database accessible} & student $\rightarrow$ 10.10.0.60:3306 \\
+Web connectivity (after restart) & PASS & Web accessible & Service restored \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Key finding.} In the flat topology, there is no lateral containment. The failure of the web server does not alter the student host's ability to reach the database: both before and during the outage, the student can connect to TCP/3306. This means that a compromised student host can use a web-server failure as a distraction while pivoting to backend services that the operator may mistakenly believe are protected by the web server's role as a front-end.
+
+\section{Segmented Network: Node Failure Results}
+
+\subsection{Web-Server Failure Test}
+
+\begin{table}[H]
+\centering
+\caption[Segmented network web-server failure results]{Segmented network web-server failure test results.}
+\label{tab:node-seg-web}
+\begin{tabularx}{\textwidth}{l l X X}
+\toprule
+\textbf{Stage} & \textbf{Status} & \textbf{Result} & \textbf{Notes} \\
+\midrule
+Web connectivity (before failure) & PASS & Web accessible & student $\rightarrow$ 10.10.40.10:80 \\
+Stop web server container & PASS & Service stopped & Web becomes unreachable \\
+Web connectivity (after failure) & PASS & Web unreachable & Expected: service is down \\
+Database during web failure & PASS & \textbf{Database BLOCKED} & Student policy allows only TCP/80, not TCP/3306 \\
+Web connectivity (after restart) & PASS & Web accessible & Service restored \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Inter-Zone Isolation Test}
+
+\begin{table}[H]
+\centering
+\caption[Segmented network inter-zone isolation results]{Segmented network inter-zone isolation test results.}
+\label{tab:node-seg-isolation}
+\begin{tabularx}{\textwidth}{l X X}
+\toprule
+\textbf{Flow} & \textbf{Result} & \textbf{Notes} \\
+\midrule
+Student $\rightarrow$ Admin & BLOCKED & Firewall enforces zone boundary \\
+Student $\rightarrow$ Staff & BLOCKED & Firewall enforces zone boundary \\
+Student $\rightarrow$ Web (TCP/80) & ALLOWED & Explicit policy permits this flow \\
+Student $\rightarrow$ Database (TCP/3306) & BLOCKED & Explicit policy denies this flow \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Key finding.} In the segmented topology, the firewall policy holds regardless of which services are running. The student host's inability to reach the database is enforced at the gateway, not by the web server acting as a proxy or middlebox. This is an important operational distinction: removing or compromising the web server does not open any new network paths from the student zone.
+
+\section{Comparative Analysis}
+
+\begin{table}[H]
+\centering
+\caption[Node availability comparative analysis]{Comparative behaviour during web-server failure.}
+\label{tab:node-compare}
+\begin{tabularx}{\textwidth}{l X X}
+\toprule
+\textbf{Property} & \textbf{Flat} & \textbf{Segmented} \\
+\midrule
+Web service restored after restart & Yes & Yes \\
+Database reachable during web outage & \textbf{Yes (risk)} & No (blocked by policy) \\
+Admin zone reachable from student & Yes & No \\
+Firewall isolation survives service failure & N/A (no isolation) & Yes \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Conclusions from the Node Availability Test}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Service availability is equivalent.} Both architectures recover the web service successfully after a restart. Network segmentation does not reduce availability.
+    \item \textbf{Containment persists through failure.} The segmented architecture's firewall rules continue to enforce zone boundaries even when services fail; there are no hidden back-paths opened by a failed node.
+    \item \textbf{The flat network has no residual protection.} When the web server is down in the flat topology, the student host retains full access to all other internal services. An attacker who can compromise a student workstation gains nothing new from the web failure, but also loses nothing.
+    \item \textbf{Defence-in-depth is reinforced.} This test demonstrates that segmentation operates as a separate, parallel control layer, independent of the availability state of individual application-layer services. This is precisely the property that the principle of defence in depth \parencite{NCSC}{2018} requires.
+\end{enumerate}
+
+\paragraph{Test environment.} Platform: Docker Compose with \texttt{iptables}-based gateway; base image: \texttt{handsonsecurity/seed-ubuntu:large}; test date: 9 May 2026.

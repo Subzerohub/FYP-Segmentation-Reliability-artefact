@@ -1,0 +1,75 @@
+\chapter{Literature Review}
+\label{ch:literature}
+
+This chapter reviews the body of work that informs the design of the project. It begins with the foundational principles of secure system design, traces the evolution of perimeter-based and zone-based defences, summarises the modern literature on lateral movement and zero-trust architecture, and surveys the cyber-range methodology that provides the empirical context for the work. The chapter ends by identifying the specific gap that this project is intended to address.
+
+\section{Principles of Secure Network Design}
+
+Security engineering as a discipline is grounded in a small number of design principles articulated by \textcite{Saltzer and Schroeder}{1975}. Three of these principles bear directly on the present work. The principle of \emph{least privilege} requires that every component of a system operate with the minimum set of privileges necessary to perform its function; in a network, this translates to allowing every host only the connectivity it actually requires \parencite{Stallings}{2017}. The principle of \emph{economy of mechanism} encourages simple, auditable controls; firewalls and access-control lists meet this requirement far better than more elaborate inline inspection technologies \parencite{Anderson}{2020}. The principle of \emph{psychological acceptability} reminds the designer that controls that interfere with legitimate work will be circumvented by users; this is why the present project measures legitimate-user performance alongside security \parencite{Bishop}{2018}.
+
+These principles are operationalised in the closely related concept of \emph{defence in depth}, which holds that no single control should be relied on as the sole line of defence \parencite{Northcutt et al.}{2005}. Network segmentation, host hardening, application authentication, encryption, and monitoring should all coexist so that the failure of any one control does not result in catastrophic compromise. The current project focuses on the network-layer component of this defence, but consciously frames it as one part of a broader stack rather than as a complete solution.
+
+\section{Perimeter Defences and the Stateful Firewall}
+
+The earliest connected enterprises relied on a single, hardened perimeter --- the so-called ``castle and moat'' model \parencite{Cheswick, Bellovin and Rubin}{2003}. Stateful packet-filtering firewalls were the canonical perimeter device, and the design choices behind them are recorded in classic works such as \textcite{Bellovin and Cheswick}{1994}. The Linux \texttt{iptables} subsystem, which is used in this project, implements stateful filtering using connection tracking on top of the netfilter framework \parencite{Tanenbaum and Wetherall}{2021}. The U.S.\ National Institute of Standards and Technology codified the use and configuration of stateful firewalls in Special Publication 800-41 \parencite{Scarfone and Hoffman}{2009}, which remains the most widely cited firewall reference document and is the basis of many of the rules implemented in Chapter~\ref{ch:implementation}.
+
+Empirical evaluations of deployed firewalls have repeatedly shown that even simple rule-sets are difficult to write correctly. \textcite{Wool}{2004} examined 37 production firewall configurations and found that all of them contained at least one configuration error, the most common being shadowed rules and overly permissive ``allow any'' clauses. This finding directly motivates one of the metrics adopted in this project --- \emph{policy accuracy}, defined as the proportion of rule expectations that match observed behaviour --- because it captures, in a single number, whether a firewall is actually doing what its author intended.
+
+\section{From Perimeter to Segmentation}
+
+The principal weakness of pure perimeter defence is that, once breached, the attacker faces no further obstacle: the interior of the network is implicitly trusted. \textcite{Convery}{2004} argued more than two decades ago that the perimeter alone was insufficient for any organisation of meaningful size, and recommended internal segmentation using virtual LANs (VLANs) and access-control lists. This recommendation has been echoed in successive versions of the CIS Critical Security Controls \parencite{CIS}{2024}, the ISO/IEC 27002 standard \parencite{ISO/IEC}{2022}, the PCI Data Security Standard \parencite{PCI Security Standards Council}{2022}, and the U.K.\ National Cyber Security Centre's network security guidance \parencite{NCSC}{2018}.
+
+Segmentation in modern infrastructures takes several forms:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{VLAN-based segmentation} partitions a layer-2 broadcast domain into multiple virtual subnets, each routed through a layer-3 device that can apply policy \parencite{Tanenbaum and Wetherall}{2021}.
+    \item \textbf{Software-defined segmentation} centralises control of network policy in a controller that pushes flow rules to programmable switches; the foundational paper is \textcite{McKeown et al.}{2008}, and a comprehensive survey is provided by \textcite{Kreutz et al.}{2015}. Vendor incarnations include Cisco TrustSec \parencite{Cisco}{2022}.
+    \item \textbf{Microsegmentation}, in which policy is enforced as close to the workload as possible (often at the hypervisor or per-container level), is described in NIST SP~800-125B \parencite{NIST}{2016} and in vendor literature such as \textcite{VMware}{2021}.
+\end{itemize}
+
+The present project uses a single \texttt{iptables} gateway rather than a hypervisor or SDN controller, which corresponds most closely to traditional VLAN-based segmentation, but the resulting policy structure is functionally equivalent at the granularity tested.
+
+\section{Lateral Movement and the Cyber Kill Chain}
+
+Segmentation is fundamentally a control on \emph{lateral movement} --- the phase of an intrusion in which an attacker, having compromised an initial foothold, attempts to extend their control to other hosts. The most influential model of this process is the \emph{cyber kill chain} introduced by \textcite{Hutchins, Cloppert and Amin}{2011}, which decomposes an intrusion into seven stages: reconnaissance, weaponisation, delivery, exploitation, installation, command and control, and actions on objectives. Lateral movement spans the last two stages and is the point at which a single compromise becomes a full breach.
+
+The MITRE ATT\&CK framework provides a more granular and continuously updated taxonomy \parencite{MITRE}{2024}. The lateral-movement tactic (TA0008) currently lists nine techniques, including remote services exploitation, internal spear-phishing, and lateral tool transfer. Crucially, every one of these techniques requires \emph{network reachability} between the source and destination host. Segmentation prevents reachability and therefore blocks every lateral-movement technique that depends on it, regardless of the specific exploit.
+
+The economic significance of lateral movement is well documented. The Verizon \emph{Data Breach Investigations Report} has found year after year that intrusions involving lateral movement have a substantially higher median impact than those that do not \parencite{Verizon}{2022}; \parencite{Verizon}{2023}. The Ponemon Institute's annual cost-of-breach study estimates the global average cost of a data breach at US\$4.45~million in 2023, with cases involving extensive internal traversal at the upper end of the distribution \parencite{Ponemon Institute}{2023}. Threat-intelligence reports from CrowdStrike \parencite{CrowdStrike}{2023} and ENISA \parencite{ENISA}{2022}; \parencite{ENISA}{2023} identify ransomware operators as the most aggressive practitioners of internal traversal, often deploying their payload only after they have reached a domain controller or a backup server.
+
+\section{Zero Trust Architecture}
+
+The zero-trust paradigm represents the logical conclusion of segmentation: rather than dividing the network into a small number of zones, every flow is authenticated and authorised independently. The phrase originated in a Forrester report by \textcite{Kindervag}{2010}, and was elevated to a formal architecture in \textcite{Rose et al.}{2020}, published as NIST Special Publication 800-207 \parencite{NIST}{2020a}. Zero trust is increasingly the de-facto target architecture for both private and public sector organisations \parencite{Gartner}{2019}; \parencite{Forrester}{2018}; \parencite{Microsoft}{2023}, and is reflected in the U.S.\ Federal Government's \textit{Executive Order 14028} on improving the nation's cybersecurity.
+
+For the purposes of this project, zero trust matters in two ways. First, it provides the most rigorous formulation of the \emph{never trust, always verify} principle, which directly motivates the experiment: if an internal compromise must not propagate, then the blast radius from any compromised host must be small. Second, it places coarse-grained segmentation on a clear evolutionary path: the segmented topology evaluated in this project is not zero trust, but is a strict subset of the controls that zero trust would require, and the methodology developed here generalises naturally to finer-grained policies.
+
+\section{Cyber Ranges, Testbeds, and Reproducible Security Research}
+
+Empirical evaluation of network defences requires a controlled environment in which traffic can be observed, attacks can be replayed, and defences can be modified without operational risk. The literature distinguishes between full \emph{cyber ranges}, which are large, often expensive simulated environments used for training and exercises, and lightweight \emph{security testbeds}, which are smaller, single-experiment environments used for research \parencite{Davis and Magrath}{2013}. Comprehensive reviews are provided by \textcite{Yamin, Katt and Gkioulos}{2020} and \textcite{Russo, Costa and Armando}{2020}; the former identifies 26 distinct cyber-range projects in the academic literature alone.
+
+The SEED Labs project, developed by Wenliang Du at Syracuse University \parencite{Du}{2022}, has become the de-facto standard environment for hands-on undergraduate security teaching, supported by both the underlying textbook and a public Docker image. The image used in this project (\texttt{handsonsecurity/seed-ubuntu:large}) is the same image used in the \emph{Computer \& Internet Security} textbook and contains the standard set of networking and security tools. \textcite{Beuran et al.}{2017} present a related platform, CyRIS, which automates testbed instantiation; CyRIS and similar systems are heavier-weight than the present project but share the philosophy of declarative, version-controlled experiment definitions.
+
+The general advantages of containerised testbeds over physical hardware are well established. Containers start in seconds rather than minutes, can be defined declaratively in source-controllable text files, and consume an order of magnitude less memory than full virtual machines \parencite{Docker Inc.}{2024}. Mininet \parencite{Kaur, Singh and Ghumman}{2014} is a related, lighter-weight environment used in software-defined networking research, but its emphasis on flow tables makes it a less natural fit for traditional segmentation experiments than Docker Compose.
+
+\section{Measurement of Segmentation Effectiveness}
+
+A critical question for any segmentation evaluation is \emph{what to measure}. The literature suggests four broad classes of metric, all of which are used in this project:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Reachability metrics} count the number of internal targets that a compromised host can communicate with on relevant ports. This is the natural definition of \emph{blast radius} \parencite{Rose et al.}{2020}; \parencite{VMware}{2021}.
+    \item \textbf{Policy correctness metrics} compare the observed behaviour of a firewall against the policy that the operator intended to implement \parencite{Wool}{2004}.
+    \item \textbf{Performance metrics} (availability, latency, throughput) capture the effect of additional controls on legitimate users \parencite{Stallings}{2017}.
+    \item \textbf{Composite indices} combine the above into a single comparable number; the Cyber Assessment Framework of the NCSC \parencite{NCSC}{2023} and the NIST Cybersecurity Framework 2.0 \parencite{NIST}{2024} use this approach for organisational scoring.
+\end{enumerate}
+
+The present work adopts a transparent weighted-sum composite (defined in Chapter~\ref{ch:methodology}) following the approach of \textcite{Cherdantseva and Hilton}{2013}. Penetration-testing tools used to populate these metrics include Nmap \parencite{Lyon}{2009}, the de-facto network-scanning utility, and bespoke shell scripts that probe specific ports.
+
+\section{Real-World Incidents That Demonstrate the Cost of Flat Networks}
+
+Several high-profile incidents serve as practitioner case studies. The 2017 NotPetya outbreak originated in a single compromised software update at a Ukrainian tax-software vendor and propagated through globally flat corporate networks at Maersk, Merck, and FedEx using \textsc{EternalBlue} and credential-harvesting techniques \parencite{Greenberg}{2019}; \parencite{Greene}{2017}. The total damage is widely cited as exceeding US\$10 billion. The 2017 WannaCry ransomware exhibited similar lateral propagation against unpatched SMB services within hospitals and other organisations whose internal networks lacked segmentation \parencite{Microsoft Threat Intelligence Center}{2017}. The 2021 Conti ransomware advisory issued by \textcite{CISA}{2021} explicitly identifies the use of internal SMB and RDP scanning following initial access. In each case, both contemporary investigation and subsequent retrospective analysis identify segmentation as one of the principal controls that would have limited the damage.
+
+\section{Identified Gap}
+
+The literature establishes very clearly that segmentation is recommended, that lateral movement is a defining feature of high-impact intrusions, and that cyber ranges are an appropriate vehicle for empirical security research. What it does not provide --- at least for an undergraduate audience working with commodity hardware --- is a single, transparent, reproducible artefact that allows the magnitude of the segmentation benefit to be measured directly. Vendor white papers do not expose their methodology; academic cyber-range papers tend to focus on tooling rather than on quantitative outcomes; and the standards documents define what should be done, not how much it helps.
+
+This project addresses that gap by providing a small but complete artefact: two declarative Docker Compose topologies, an automated test harness, a derived set of metrics, and an open data set. The methodology and the implementation are described in the next two chapters.

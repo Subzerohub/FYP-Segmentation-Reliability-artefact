@@ -1,0 +1,80 @@
+\chapter{Conclusion and Future Work}
+\label{ch:conclusion}
+
+\section{Summary}
+
+This project set out to determine, by direct measurement, how much network segmentation reduces the lateral-movement attack surface available to an internal adversary, and what that reduction costs in terms of legitimate-user performance. A reproducible cyber range was constructed using Docker, the SEED Labs container image, and Linux \texttt{iptables}, and an automated test harness was developed that produces deterministic CSV evidence and matching figures.
+
+Against a representative ten-host campus topology, segmentation reduced blast-radius exposure from 100\% to 25\%, raised firewall policy accuracy from 50\% to 100\%, and raised a composite reliability index from 52.4 to 91.1 out of 100. HTTP availability remained at 100\% in both topologies, and average response time rose by approximately 50~$\mu$s --- a fraction equivalent to one extra forwarding decision. The qualitative direction of these findings was predicted by the literature surveyed in Chapter~\ref{ch:literature}; the contribution of this work is to provide an open, reproducible quantitative anchor for that prediction in a configuration that is well within the means of a small organisation or an undergraduate student.
+
+\section{Achievement of Objectives}
+
+Each of the six objectives stated in Section~1.3 has been met:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{O1} (literature survey): conducted in Chapter~\ref{ch:literature}, with explicit identification of the gap that this work fills.
+    \item \textbf{O2} (topology design): set out in Section~\ref{sec:topology} and illustrated in Figures~\ref{fig:topo-flat} and~\ref{fig:topo-segmented}.
+    \item \textbf{O3} (implementation): documented in Chapter~\ref{ch:implementation} and reproduced in full in the appendices.
+    \item \textbf{O4} (test harness): the four shell scripts and two Python scripts in Appendices~\ref{ch:appendix-tests}--\ref{ch:appendix-helper} cover policy accuracy, blast radius, attack surface, and performance under load.
+    \item \textbf{O5} (execution and composite metric): reported in Chapter~\ref{ch:results}, with detailed latency and throughput parameters in Section~\ref{sec:latency-throughput} and all CSV outputs in Appendix~\ref{ch:appendix-data}.
+    \item \textbf{O6} (discussion of implications): treated in Chapter~\ref{ch:discussion}, with explicit threats-to-validity and limitations sections. A supplementary node-availability experiment is documented in Appendix~\ref{ch:appendix-node}.
+\end{itemize}
+
+\section{Reflections on the Project}
+\label{sec:reflections}
+
+\subsection{How the Project Progressed}
+
+The project began with a clear but broad aim: to measure, rather than merely claim, the security benefit of network segmentation. Translating that aim into a concrete, reproducible experiment took considerably longer than anticipated. The earliest weeks were spent reading the literature and realising that while the qualitative argument for segmentation is well-established, the published quantitative evidence is sparse and rarely reproducible. That observation sharpened the research question and anchored the decision to build a testbed from scratch rather than to rely on existing simulations.
+
+The implementation phase went more smoothly than expected. Docker Compose proved to be an excellent vehicle for expressing network topology declaratively: the flat topology took roughly two hours to build and validate, and the segmented topology a further half-day. The firewall scripts required more careful thought---particularly the decision to adopt a default-deny posture and to write rules in terms of subnets rather than individual hosts---but once the design was committed to, the implementation followed directly. The test harness emerged naturally from the list of metrics defined in Chapter~\ref{ch:methodology} and required no significant redesign once written.
+
+The analysis phase produced several surprises. The most significant was the magnitude of the blast-radius result. The flat topology allowing eight out of eight probes to succeed was a stark, unambiguous number that needed no interpretation; similarly, the segmented topology blocking six out of eight was immediately clear. These results were more decisive than the author had expected, and provided a level of confidence in the conclusion that purely qualitative work cannot offer.
+
+The performance results were the most reassuring. There was a persistent informal expectation---common in the industry conversations the author had encountered---that segmentation would impose a noticeable performance penalty. The measured overhead of 52~$\mu$s per request, and the corresponding drop in sequential throughput from approximately 970 to 924 req/s, decisively refuted that expectation. Seeing the per-iteration response-time plots for both topologies overlaid, with virtually identical distributions, was one of the most satisfying moments of the project.
+
+\subsection{What Went Well}
+
+Several aspects of the project worked particularly well.
+
+\paragraph{Reproducibility-first design.} The decision to capture every component of the experiment in declarative source files---a single Dockerfile, two Compose files, two firewall scripts, and a test harness---paid dividends throughout. When an unexpected result appeared (for example, an intermittent connectivity test failure during early development), it was straightforward to isolate the cause by re-running only the affected test. This discipline also meant that the final set of results could be regenerated on demand at any point, which gave confidence in the integrity of the numbers reported.
+
+\paragraph{Metric definition before execution.} Defining the four metrics formally in Section~\ref{sec:metrics} before running any experiments prevented the temptation of post-hoc metric selection. The reliability index weights were set before the first test run, and were not adjusted afterwards. This kept the analysis honest and made it much easier to write a credible threats-to-validity section.
+
+\paragraph{Scope discipline.} The decision to restrict the project to network-layer controls, ten hosts, and a single-attacker threat model was initially frustrating---there were many interesting extensions that suggested themselves---but it proved to be the right call. A tighter scope produced cleaner experiments, a cleaner report, and results that are genuinely comparable across the two topologies without confounding variables.
+
+\subsection{What Was Difficult}
+
+The most difficult part of the project was reasoning about the zone model for the segmented topology. Deciding which flows to permit and which to deny required thinking carefully about the realistic operational requirements of each role (student, staff, administrator, IoT device, guest visitor), and about the consequences of getting those decisions wrong. The process of writing down the policy in English before translating it into \texttt{iptables} rules---and then verifying that the rules actually implemented what the English said---was unexpectedly time-consuming but ultimately essential.
+
+A second difficulty was ensuring that the performance measurement was fair. Because the testbed runs on a single physical host, the Docker scheduler introduces timing noise that appears in the response-time distributions. Choosing 500 iterations per source was a pragmatic attempt to average out this noise, but it required careful thought about whether the resulting averages were meaningful. The consistency of the per-iteration plots across topologies (Figure~\ref{fig:rt-trace}) provided reassurance that the noise was symmetric.
+
+\subsection{Key Lessons}
+
+Three broader lessons emerge from reflecting on the project.
+
+First, the difficult parts of security are almost never the technical implementations. The \texttt{iptables} commands that implement the segmented firewall are straightforward; the difficult part was deciding, in advance and with principled justification, what the policy should be. This matches the observation by \textcite{Schneier}{2018} that security is primarily a design and operational discipline, not a technical one.
+
+Second, numbers matter. The qualitative claim that segmentation ``reduces lateral movement'' is widely accepted, but saying that a single \texttt{iptables} configuration blocks six of eight probe targets and raises a composite index by 38.7 points is a qualitatively different kind of statement. Numbers invite scrutiny, comparison, and challenge in a way that qualitative claims do not, and that scrutiny is healthy.
+
+Third, reproducibility is not a nice-to-have. The ability to regenerate every result in this report from a \texttt{git clone} and a single script is not merely a technical convenience; it is what makes the results credible. Without reproducibility, a reader who doubts a number has no way to verify it.
+
+\section{Future Work}
+
+Several extensions of the work are natural and feasible.
+
+\paragraph{Microsegmentation and zero-trust comparison.} The current testbed implements zone-level segmentation. A direct extension would add two additional configurations: a per-host microsegmentation configuration in which every container has its own network and the firewall enforces host-to-host policy, and a zero-trust configuration in which every flow is authenticated independently (for example, using mutual TLS or a service-mesh proxy such as Istio). The same metrics could be computed against all four configurations to produce a quantitative segmentation-maturity curve.
+
+\paragraph{Larger and more realistic services.} The testbed services are minimal (a static web page and TCP echoes). Replacing them with realistic open-source software --- a real SQL server, an SMB share, an LDAP directory --- would allow application-layer behaviour to be observed and would expose any second-order effects of segmentation on service operation.
+
+\paragraph{Concurrent load and DoS resilience.} The performance harness issues sequential requests. Extending it to use a concurrent HTTP load generator (for example, \texttt{wrk} or \texttt{vegeta}) and to include simple denial-of-service workloads would allow the firewall's capacity ceiling to be characterised, and would address the threat to validity raised in Section~6.4.
+
+\paragraph{Automated rule-set verification.} The same test harness that measures policy accuracy could be extended into a continuous-integration pipeline: every change to the firewall rule set or the Compose file would be tested automatically before deployment. This would directly address the maintenance challenge identified by \textcite{Wool}{2004} and would produce a tooling artefact of independent value to teaching laboratories.
+
+\paragraph{Defender-side observability.} The current harness measures only the attacker's experience. Adding a logging layer that captures dropped packets, accepted packets, and connection-rate spikes at the firewall would allow the defender's situational awareness \parencite{Endsley}{1995} to be evaluated alongside the attacker's success rate. A more sophisticated version of this extension would add an intrusion-detection sensor and a SIEM-style correlation pipeline.
+
+\paragraph{Threat-model expansion.} The current threat model excludes attacks against the firewall itself, against the host operating system, and against services at the application layer. A more general version of the work would extend the model to include each of these classes and, where appropriate, additional defensive controls (host-based intrusion detection, encrypted overlays, application-layer authentication). The methodology --- declarative topology, automated harness, transparent metrics --- generalises to any of these settings.
+
+\section{Closing Statement}
+
+Network segmentation has been a recommended control for at least three decades, and yet it remains widely under-deployed. One explanation, suggested by both vendor and analyst literature, is that practitioners lack a transparent, low-cost way of demonstrating its benefit to themselves. By building an open testbed, defining a small and explicit measurement methodology, and publishing the resulting numbers, this project contributes a small step toward closing that gap. The data presented here are unlikely to surprise an experienced security architect, but they may help a less experienced reader, a budget-holder, or an audit committee to understand --- in concrete numbers rather than abstract claims --- what segmentation buys, and how cheaply.

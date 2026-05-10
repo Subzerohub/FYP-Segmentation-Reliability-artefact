@@ -1,0 +1,34 @@
+\chapter{Raw Data}
+\label{ch:appendix-data}
+
+This appendix reproduces the raw CSV files written by the test harness. Each file is reproduced in full so that the numerical claims in Chapter~\ref{ch:results} can be independently verified line-by-line.
+
+\section*{E.1 \quad Summary (\texttt{results/summary.csv})}
+\addcontentsline{toc}{section}{E.1\quad Summary}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{code/summary.csv}
+
+\section*{E.2 \quad Flat Connectivity (\texttt{results/flat\_connectivity.csv})}
+\addcontentsline{toc}{section}{E.2\quad Flat Connectivity}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{code/flat_connectivity.csv}
+
+\section*{E.3 \quad Segmented Connectivity (\texttt{results/segmented\_connectivity.csv})}
+\addcontentsline{toc}{section}{E.3\quad Segmented Connectivity}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{code/segmented_connectivity.csv}
+
+\section*{E.4 \quad Flat Blast Radius (\texttt{results/flat\_blast\_radius.csv})}
+\addcontentsline{toc}{section}{E.4\quad Flat Blast Radius}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{code/flat_blast_radius.csv}
+
+\section*{E.5 \quad Segmented Blast Radius (\texttt{segmented\_blast\_radius.csv})}
+\addcontentsline{toc}{section}{E.5\quad Segmented Blast Radius}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{code/segmented_blast_radius.csv}
+
+\section*{E.6 \quad Flat Nmap Scan (\texttt{results/flat\_nmap\_scan.txt})}
+\addcontentsline{toc}{section}{E.6\quad Flat Nmap Scan}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{code/flat_nmap_scan.txt}
+
+\section*{E.7 \quad Segmented Nmap Scan (\texttt{segmented\_nmap\_scan.txt}, excerpt)}
+\addcontentsline{toc}{section}{E.7\quad Segmented Nmap Scan (excerpt)}
+The full segmented scan covers all six target subnets (1{,}536 addresses) and runs to over 10{,}000 lines of output. The excerpt below shows the discovery of the four hosts in the same subnet as the attacker (\texttt{student\_net}); every probe into the other five zone subnets returned \texttt{filtered}.
+
+\lstinputlisting[basicstyle=\ttfamily\scriptsize, frame=single, breaklines=true]{code/segmented_nmap_scan_excerpt.txt}

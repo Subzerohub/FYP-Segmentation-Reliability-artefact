@@ -1,0 +1,100 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2026-05-09 16:53 UTC
+Nmap scan report for dave-Lenovo-YOGA-530-14ARR (10.10.0.1)
+Host is up (0.000090s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 36:DD:F1:ED:86:BD (Unknown)
+
+Nmap scan report for flat-student2.flat_internal (10.10.0.11)
+Host is up (0.000033s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 4E:CA:3F:87:BE:C5 (Unknown)
+
+Nmap scan report for flat-staff.flat_internal (10.10.0.20)
+Host is up (0.000028s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 32:FF:9A:5A:C1:B9 (Unknown)
+
+Nmap scan report for flat-admin.flat_internal (10.10.0.30)
+Host is up (0.000031s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 42:00:BB:B5:99:E2 (Unknown)
+
+Nmap scan report for flat-web.flat_internal (10.10.0.40)
+Host is up (0.000030s latency).
+
+PORT     STATE  SERVICE
+80/tcp   open   http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 5E:C8:E6:90:C8:D8 (Unknown)
+
+Nmap scan report for flat-file.flat_internal (10.10.0.50)
+Host is up (0.000029s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  open   microsoft-ds
+3306/tcp closed mysql
+MAC Address: D6:0D:E4:F2:BC:09 (Unknown)
+
+Nmap scan report for flat-db.flat_internal (10.10.0.60)
+Host is up (0.000033s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp open   mysql
+MAC Address: 42:62:A5:94:DD:03 (Unknown)
+
+Nmap scan report for flat-iot.flat_internal (10.10.0.70)
+Host is up (0.000045s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 16:9B:FB:E2:5A:C8 (Unknown)
+
+Nmap scan report for flat-guest.flat_internal (10.10.0.80)
+Host is up (0.000038s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 06:60:6D:10:1D:E5 (Unknown)
+
+Nmap scan report for flat-fw.flat_internal (10.10.0.254)
+Host is up (0.000059s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 26:3B:A1:BA:15:B3 (Unknown)
+
+Nmap scan report for 9e4d5d5a846f (10.10.0.10)
+Host is up (0.000086s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+
+Nmap done: 256 IP addresses (11 hosts up) scanned in 1.19 seconds

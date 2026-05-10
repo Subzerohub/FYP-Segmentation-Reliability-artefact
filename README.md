@@ -1,58 +1,74 @@
-![SEEDLabs Logo](https://seedsecuritylabs.org/assets/images/seed_labs_b.png)
---------------------------------------------------------------------------------
+# FYP Segmentation Reliability Artefact
 
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+This artefact evaluates how network segmentation affects reliability, containment, and policy enforcement in a controlled Docker-based cyber-security lab. It compares two architectures:
 
-This is the core of the entire SEED project, it consists
-of all the labs that we have developed and maintained 
-since 2002. 
+- `flat-network/`: a single internal network protected by a forwarding firewall.
+- `segmented-network/`: separate student, staff, admin, server, IoT, and guest networks with explicit inter-segment firewall policy.
 
+The experiment measures whether segmentation improves containment after compromise while preserving required service availability.
 
-## History
+## Artefact Contents
 
-The SEED project started in 2002 by Wenliang Du, a professor at the Syracuse
-University. It was funded by a total of 1.3 million dollars from the US
-National Science Foundation (NSF). Now SEED labs are being used by over a
-thousand institutes around the world. SEED stands for (SEcurity EDucaton).
+| Path | Purpose |
+| --- | --- |
+| `flat-network/` | Docker Compose topology and firewall rules for the flat baseline. |
+| `segmented-network/` | Docker Compose topology and firewall rules for the segmented architecture. |
+| `image_fyp/` | Reproducible container image with networking, scanning, and test tools. |
+| `scripts/` | Connectivity, blast-radius, scan, performance, plotting, and summary scripts. |
+| `results/` | Collected CSV and Nmap outputs from the submitted experiment run. |
+| `results/plots/` | Figures generated from `results/summary.csv` and performance outputs. |
+| `docs/` | Academic artefact guide, methodology, results summary, and manifest. |
 
-The project has been maintained by Professor Du himself in the past, with the help
-from his students. While this has worked quite well for more than 20 years, 
-it has now reached a point, where individual efforts can no longer meet 
-the ever increasing needs from the world. There are many interesting things
-that we can do if we work together as a community.
+## Research Question
 
-## Vision
+Does role-based network segmentation improve containment and policy reliability compared with a flat internal network, without materially reducing web-service availability?
 
-Learning by doing is essential for education. 
-Our vision is to develop hands-on labs that can help achieve
-learning by doing in cybersecurity education.
-These include lab exercises that are well-designed, interesting, and effective, 
-as well as the platforms to support these labs. 
-The labs and platforms are open source, so universities,
-colleges, and high schools around the world 
-can freely use them to enhance their curricula.
+## Key Submitted Results
 
+The supplied results show that the segmented design preserves HTTP availability while reducing lateral reachability from a compromised student host.
 
-## Contributing
+| Scenario | Policy accuracy | Blast-radius exposure | Containment | Availability | Reliability index |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Flat | 50.00% | 100.00% | 0.00% | 100.00% | 52.40 |
+| Segmented | 100.00% | 25.00% | 75.00% | 100.00% | 91.14 |
 
-Want to contribute? Great! Please take a few minutes to
-[read this](CONTRIBUTING.md)!
+## Quick Start
 
+Prerequisites:
 
-## License
+- Docker with Compose support.
+- Bash.
+- Python 3.
+- Optional for plot regeneration: `matplotlib`.
 
-All the SEED labs in this repository use open-source licenses. 
-You can [read this](LICENSE.md) for more details.
+Run the full experiment from the repository root:
 
+```bash
+./scripts/run_all.sh
+```
 
-## Organization of this repository
+The script rebuilds the lab image, runs both scenarios, refreshes `results/*.csv` and `results/*_nmap_scan.txt`, regenerates `results/summary.csv`, and attempts to regenerate plots.
 
-The SEED labs are divided into 6 categories, and each one has its own folder. 
+To regenerate only the summary from existing result files:
 
-- ```category-blockchain```: For blockchain labs 
-- ```category-crypto```:     For crypto labs
-- ```category-hardware```:   For hardware security labs
-- ```category-mobile```:     For mobile security labs
-- ```category-network```:    For network security labs
-- ```category-software```:   For software security labs
-- ```category-web```:        For web security labs
+```bash
+./scripts/summarise_results.py
+```
+
+To regenerate plots from existing result files:
+
+```bash
+./scripts/make_plots.py
+```
+
+## Reading Order For Markers
+
+1. [`docs/ARTIFACT_EVALUATION.md`](docs/ARTIFACT_EVALUATION.md) explains how to inspect, run, and validate the artefact.
+2. [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) describes the experimental design and metrics.
+3. [`docs/RESULTS.md`](docs/RESULTS.md) summarises the supplied evidence.
+4. [`docs/MANIFEST.md`](docs/MANIFEST.md) lists the files and their roles.
+
+## Reproducibility Notes
+
+The artefact is self-contained except for Docker base-image retrieval and Python plotting dependencies. The saved result files allow assessment even if the Docker environment is unavailable. Re-running the experiment will overwrite the CSV, scan, summary, and plot outputs in `results/`.
+

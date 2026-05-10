@@ -1,0 +1,123 @@
+version: "3"
+
+x-common: &common
+  build: ../image_fyp
+  image: fyp-seed-net
+  tty: true
+  cap_add:
+    - ALL
+
+services:
+  fw:
+    <<: *common
+    container_name: flat-fw
+    privileged: true
+    sysctls:
+      - net.ipv4.ip_forward=1
+    volumes:
+      - ./firewall.sh:/firewall.sh
+    networks:
+      flat_external:
+        ipv4_address: 192.168.100.254
+      flat_internal:
+        ipv4_address: 10.10.0.254
+    command: bash -c "chmod +x /firewall.sh && /firewall.sh && tail -f /dev/null"
+
+  attacker:
+    <<: *common
+    container_name: flat-attacker
+    depends_on:
+      - fw
+    networks:
+      flat_external:
+        ipv4_address: 192.168.100.100
+    command: bash -c "ip route add 10.10.0.0/24 via 192.168.100.254 || true; tail -f /dev/null"
+
+  student:
+    <<: *common
+    container_name: flat-student
+    networks:
+      flat_internal:
+        ipv4_address: 10.10.0.10
+    command: bash -c "ip route del default || true; ip route add default via 10.10.0.254; tail -f /dev/null"
+
+  student2:
+    <<: *common
+    container_name: flat-student2
+    networks:
+      flat_internal:
+        ipv4_address: 10.10.0.11
+    command: bash -c "ip route del default || true; ip route add default via 10.10.0.254; tail -f /dev/null"
+
+  staff:
+    <<: *common
+    container_name: flat-staff
+    networks:
+      flat_internal:
+        ipv4_address: 10.10.0.20
+    command: bash -c "ip route del default || true; ip route add default via 10.10.0.254; tail -f /dev/null"
+
+  admin:
+    <<: *common
+    container_name: flat-admin
+    networks:
+      flat_internal:
+        ipv4_address: 10.10.0.30
+    command: bash -c "ip route del default || true; ip route add default via 10.10.0.254; tail -f /dev/null"
+
+  web:
+    <<: *common
+    container_name: flat-web
+    networks:
+      flat_internal:
+        ipv4_address: 10.10.0.40
+    command: bash -c "ip route del default || true; ip route add default via 10.10.0.254; echo 'Flat web server OK' > index.html; python3 -m http.server 80"
+
+  file:
+    <<: *common
+    container_name: flat-file
+    volumes:
+      - ../scripts:/scripts
+    networks:
+      flat_internal:
+        ipv4_address: 10.10.0.50
+    command: bash -c "ip route del default || true; ip route add default via 10.10.0.254; python3 /scripts/tcp_service.py 445 flat_file_server"
+
+  db:
+    <<: *common
+    container_name: flat-db
+    volumes:
+      - ../scripts:/scripts
+    networks:
+      flat_internal:
+        ipv4_address: 10.10.0.60
+    command: bash -c "ip route del default || true; ip route add default via 10.10.0.254; python3 /scripts/tcp_service.py 3306 flat_database"
+
+  iot:
+    <<: *common
+    container_name: flat-iot
+    networks:
+      flat_internal:
+        ipv4_address: 10.10.0.70
+    command: bash -c "ip route del default || true; ip route add default via 10.10.0.254; tail -f /dev/null"
+
+  guest:
+    <<: *common
+    container_name: flat-guest
+    networks:
+      flat_internal:
+        ipv4_address: 10.10.0.80
+    command: bash -c "ip route del default || true; ip route add default via 10.10.0.254; tail -f /dev/null"
+
+networks:
+  flat_external:
+    name: flat_external
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+
+  flat_internal:
+    name: flat_internal
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24

@@ -1,0 +1,9 @@
+scenario,source,target,ip,protocol_port,expected,actual,pass_fail,response_time_ms
+flat,flat-student,flat-web,10.10.0.40,TCP/80,ALLOW,ALLOW,PASS,99
+flat,flat-student,flat-db,10.10.0.60,TCP/3306,BLOCK,ALLOW,FAIL,88
+flat,flat-student,flat-admin,10.10.0.30,ICMP,BLOCK,ALLOW,FAIL,109
+flat,flat-staff,flat-file,10.10.0.50,TCP/445,ALLOW,ALLOW,PASS,132
+flat,flat-iot,flat-admin,10.10.0.30,ICMP,BLOCK,ALLOW,FAIL,99
+flat,flat-guest,flat-db,10.10.0.60,TCP/3306,BLOCK,ALLOW,FAIL,88
+flat,flat-attacker,flat-web,10.10.0.40,TCP/80,ALLOW,ALLOW,PASS,84
+flat,flat-attacker,flat-db,10.10.0.60,TCP/3306,BLOCK,BLOCK,PASS,1090

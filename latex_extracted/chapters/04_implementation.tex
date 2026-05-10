@@ -1,0 +1,132 @@
+\chapter{Implementation}
+\label{ch:implementation}
+
+This chapter describes how the design from Chapter~\ref{ch:methodology} was realised in software. The implementation is intentionally minimal: a single base image, two Docker Compose files, two firewall scripts, and a small set of shell and Python tools. The total source is fewer than 600 lines and is reproduced in full in the appendices.
+
+\section{Tooling and Base Image}
+
+All hosts in the experiment are realised as Docker containers built from a single base image (Listing~\ref{lst:dockerfile}). The image inherits from \texttt{handsonsecurity/seed-ubuntu:large}, the standard SEED Labs image \parencite{Du}{2022}, which provides a hardened Ubuntu environment containing the development and analysis tools commonly used in security teaching. On top of this base, the project image installs \texttt{iproute2}, \texttt{iputils-ping}, \texttt{curl}, \texttt{nmap}, \texttt{iperf3}, \texttt{netcat-openbsd}, \texttt{python3}, \texttt{procps}, and \texttt{iptables}. These are the only tools required by either the test harness or the simulated services.
+
+Container orchestration is performed by Docker Compose v2. The choice of Compose over a heavier orchestrator such as Kubernetes is deliberate: Compose's declarative YAML syntax is simple enough for the entire topology to be expressed in approximately 100 lines per scenario, the topology can be inspected as plain text in a code review, and the experiment can be brought up and torn down with a single command. The Docker networking driver is the default \texttt{bridge}, configured with explicit IPAM so that every container has a stable, predictable address \parencite{Docker Inc.}{2024}.
+
+\section{Flat Topology}
+
+The flat topology (\texttt{1777734326126\_docker-compose.yml}, reproduced in Appendix~\ref{ch:appendix-dockerfiles}) declares two networks: \texttt{flat\_external} (\texttt{192.168.100.0/24}) for the attacker and \texttt{flat\_internal} (\texttt{10.10.0.0/24}) for everything else. Ten service definitions place each container at a fixed IP. The firewall service is granted \texttt{NET\_ADMIN} privileges and runs the script in Listing~\ref{lst:fwflat} on startup; it sets \texttt{net.ipv4.ip\_forward=1} via \texttt{sysctls} so that the container can act as a router.
+
+\begin{lstlisting}[style=shellstyle, caption={Flat firewall ruleset (\texttt{firewall.sh})}, label=lst:fwflat]
+iptables -F
+iptables -P FORWARD DROP
+iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+# Internal network can go out.
+iptables -A FORWARD -s 10.10.0.0/24 -j ACCEPT
+# External attacker can only reach public web server.
+iptables -A FORWARD -s 192.168.100.0/24 -d 10.10.0.40 -p tcp --dport 80 -j ACCEPT
+# External attacker cannot reach other internal systems.
+iptables -A FORWARD -s 192.168.100.0/24 -d 10.10.0.0/24 -j DROP
+\end{lstlisting}
+
+The salient property of this rule set is its asymmetry. The perimeter is enforced (the external attacker can reach only the web server on port~80), but no rule restricts traffic between internal hosts. This reproduces the behaviour of countless real-world flat networks: a strong front door and an empty house behind it. Tools such as \texttt{ping}, \texttt{nc}, and \texttt{nmap} are unconstrained between any pair of internal hosts, which is precisely the behaviour the experiment is designed to expose.
+
+\section{Segmented Topology}
+
+The segmented Compose file (\texttt{docker-compose.yml}, reproduced in Appendix~\ref{ch:appendix-dockerfiles}) is functionally equivalent to the flat file: the same ten hosts, with the same IP suffixes, run the same services. The principal difference is that the firewall is connected to seven networks (one external, six internal) and each internal host is connected to exactly one of these zone networks. The IP plan is summarised in Table~\ref{tab:ip-plan}.
+
+\begin{table}[H]
+\centering
+\caption{IP plan for the segmented topology.}
+\label{tab:ip-plan}
+\begin{tabularx}{\textwidth}{l X l l}
+\toprule
+\textbf{Zone} & \textbf{Purpose} & \textbf{Subnet} & \textbf{Hosts} \\
+\midrule
+\texttt{seg\_external} & Untrusted external network (Internet) & 192.168.200.0/24 & attacker \\
+\texttt{student\_net} & Student-owned workstations & 10.10.10.0/24 & student, student2 \\
+\texttt{staff\_net} & Staff workstations & 10.10.20.0/24 & staff \\
+\texttt{admin\_net} & Privileged administrators & 10.10.30.0/24 & admin \\
+\texttt{server\_net} & Production application servers & 10.10.40.0/24 & web, file, db \\
+\texttt{iot\_net} & Untrusted IoT devices & 10.10.50.0/24 & iot \\
+\texttt{guest\_net} & Visitor devices & 10.10.60.0/24 & guest \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The segmented firewall ruleset (Listing~\ref{lst:fwseg}) implements a default-deny policy with explicit, role-appropriate allow rules. Every entry has been written to express a specific business requirement: students need only the public web server; staff additionally need the file server; only the administrator zone may reach the database. IoT and guest zones are restricted to web access. The structure of the rules reflects the role-based access-control discipline recommended by \textcite{Hu et al.}{2014}.
+
+\begin{lstlisting}[style=shellstyle, caption={Segmented firewall ruleset (excerpt)}, label=lst:fwseg]
+iptables -F
+iptables -P FORWARD DROP
+iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+# External attacker can only reach public web server.
+iptables -A FORWARD -s 192.168.200.0/24 -d 10.10.40.10 -p tcp --dport 80 -j ACCEPT
+# Students can only reach web.
+iptables -A FORWARD -s 10.10.10.0/24 -d 10.10.40.10 -p tcp --dport 80 -j ACCEPT
+# Staff can reach web and file server.
+iptables -A FORWARD -s 10.10.20.0/24 -d 10.10.40.10 -p tcp --dport 80 -j ACCEPT
+iptables -A FORWARD -s 10.10.20.0/24 -d 10.10.40.20 -p tcp --dport 445 -j ACCEPT
+# Admin can reach web, file server, and database.
+iptables -A FORWARD -s 10.10.30.0/24 -d 10.10.40.10 -p tcp --dport 80 -j ACCEPT
+iptables -A FORWARD -s 10.10.30.0/24 -d 10.10.40.20 -p tcp --dport 445 -j ACCEPT
+iptables -A FORWARD -s 10.10.30.0/24 -d 10.10.40.30 -p tcp --dport 3306 -j ACCEPT
+# IoT and guest can only reach web.
+iptables -A FORWARD -s 10.10.50.0/24 -d 10.10.40.10 -p tcp --dport 80 -j ACCEPT
+iptables -A FORWARD -s 10.10.60.0/24 -d 10.10.40.10 -p tcp --dport 80 -j ACCEPT
+\end{lstlisting}
+
+Two design choices in this rule set deserve explicit comment. First, the policy is \emph{positive}: the only rules are allow rules added against a default-deny chain. Negative or shadowing rules of the kind highlighted as problematic by \textcite{Wool}{2004} are absent by construction. Second, the rules are written in terms of \emph{zones}, not individual hosts: changes to the contents of a zone do not require changes to the policy, which improves operational hygiene over time.
+
+\section{Simulated Services}
+
+Three of the ten internal hosts run network services. The web server (\texttt{web}) runs Python's built-in \texttt{http.server} on port~80, serving a one-line static page. The file (\texttt{file}) and database (\texttt{db}) hosts run a deliberately minimal TCP service implemented in 12 lines of Python (Listing~\ref{lst:tcpsvc}, reproduced in Appendix~\ref{ch:appendix-helper}). The service simply accepts connections, returns an identifying banner, and closes the connection. This is sufficient to allow Nmap and \texttt{nc} to detect that the port is open and to allow the connectivity test to distinguish \textsc{allow} from \textsc{block}, while keeping the experiment free of any vulnerable real-world software whose behaviour might confound the measurements.
+
+\begin{lstlisting}[style=pystyle, caption={Minimal TCP service (\texttt{tcp\_service.py})}, label=lst:tcpsvc]
+import socket, sys
+port = int(sys.argv[1])
+name = sys.argv[2] if len(sys.argv) > 2 else "service"
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+sock.bind(("0.0.0.0", port))
+sock.listen(20)
+print(f"{name} listening on TCP port {port}", flush=True)
+while True:
+    conn, addr = sock.accept()
+    conn.sendall(f"{name} OK from {addr}\n".encode())
+    conn.close()
+\end{lstlisting}
+
+\section{Test Harness}
+
+The four test scripts (\texttt{connectivity\_test.sh}, \texttt{blast\_radius\_test.sh}, \texttt{performance\_test.sh}, \texttt{scan\_test.sh}) are reproduced in Appendix~\ref{ch:appendix-tests}. Each takes a single argument (\texttt{flat} or \texttt{segmented}) and produces a CSV file in the \texttt{results/} directory. The harness uses \texttt{docker exec} to issue commands inside the relevant client container; this is the cleanest way to ensure that the source IP of each probe is the IP assigned to the client by Docker, not the host's address. The connectivity test uses \texttt{nc -w 1} for TCP probes and \texttt{ping -c 1 -W 1} for ICMP probes, with a 2-second outer \texttt{timeout} guard.
+
+The performance test issues 500 HTTP requests per source. Reading the curl output format string \texttt{"\%\{http\_code\},\%\{time\_total\}"} captures both the response code and the wall-clock duration of each request. With four sources per scenario this yields 2{,}000 measurements per architecture and 4{,}000 in total, providing ample statistical material for the analysis in Chapter~\ref{ch:results}.
+
+\section{Summarisation and Plotting}
+
+The summarisation script (\texttt{summarise\_results.py}, Appendix~\ref{ch:appendix-helper}) reads the four CSV files for each scenario, computes the metrics defined in Section~\ref{sec:metrics}, and writes a single \texttt{summary.csv}. The plotting script (\texttt{make\_plots.py}, Appendix~\ref{ch:appendix-helper}) reads \texttt{summary.csv} and the per-scenario performance logs and emits eight PNG files using Matplotlib. Both scripts are pure Python with no third-party dependencies beyond Matplotlib, and both are deterministic in the sense that the same inputs will always produce the same outputs. This is essential for the reproducibility argument made in the previous chapter.
+
+\section{Repository Layout}
+
+The complete project is organised as follows:
+
+\begin{lstlisting}[style=shellstyle, caption={Top-level repository layout}]
+fyp/
+  image_fyp/
+    Dockerfile                  # base SEED + tooling image
+  flat/
+    docker-compose.yml          # 10 hosts, single subnet
+    firewall.sh                 # perimeter-only ruleset
+  segmented/
+    docker-compose.yml          # 10 hosts, six zones
+    firewall.sh                 # default-deny + role allow rules
+  scripts/
+    tcp_service.py              # minimal TCP echo service
+  tests/
+    connectivity_test.sh        # policy verification
+    blast_radius_test.sh        # lateral movement probe
+    performance_test.sh         # 500-iteration HTTP load
+    scan_test.sh                # Nmap visibility check
+    summarise_results.py        # metric computation
+    make_plots.py               # figure generation
+  results/                      # generated CSVs, plots, scans
+\end{lstlisting}
+
+This layout supports the workflow described in Section~3.6: a researcher unfamiliar with the project can clone the repository, run \texttt{docker compose up} in either the \texttt{flat/} or \texttt{segmented/} directory, run the test suite, and obtain results comparable with those reported in the next chapter.

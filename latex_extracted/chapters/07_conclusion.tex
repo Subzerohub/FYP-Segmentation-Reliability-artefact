@@ -1,0 +1,47 @@
+\chapter{Conclusion and Future Work}
+\label{ch:conclusion}
+
+\section{Summary}
+
+This project set out to determine, by direct measurement, how much network segmentation reduces the lateral-movement attack surface available to an internal adversary, and what that reduction costs in terms of legitimate-user performance. A reproducible cyber range was constructed using Docker, the SEED Labs container image, and Linux \texttt{iptables}, and an automated test harness was developed that produces deterministic CSV evidence and matching figures.
+
+Against a representative ten-host campus topology, segmentation reduced blast-radius exposure from 100\% to 25\%, raised firewall policy accuracy from 50\% to 100\%, and raised a composite reliability index from 52.4 to 91.1 out of 100. HTTP availability remained at 100\% in both topologies, and average response time rose by approximately 50~$\mu$s --- a fraction equivalent to one extra forwarding decision. The qualitative direction of these findings was predicted by the literature surveyed in Chapter~\ref{ch:literature}; the contribution of this work is to provide an open, reproducible quantitative anchor for that prediction in a configuration that is well within the means of a small organisation or an undergraduate student.
+
+\section{Achievement of Objectives}
+
+Each of the six objectives stated in Section~1.3 has been met:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{O1} (literature survey): conducted in Chapter~\ref{ch:literature}, with explicit identification of the gap that this work fills.
+    \item \textbf{O2} (topology design): set out in Section~\ref{sec:topology} and illustrated in Figures~\ref{fig:topo-flat} and~\ref{fig:topo-segmented}.
+    \item \textbf{O3} (implementation): documented in Chapter~\ref{ch:implementation} and reproduced in full in the appendices.
+    \item \textbf{O4} (test harness): the four shell scripts and two Python scripts in Appendices~\ref{ch:appendix-tests}--\ref{ch:appendix-helper} cover policy accuracy, blast radius, attack surface, and performance under load.
+    \item \textbf{O5} (execution and composite metric): reported in Chapter~\ref{ch:results}, with all CSV outputs in Appendix~\ref{ch:appendix-data}.
+    \item \textbf{O6} (discussion of implications): treated in Chapter~\ref{ch:discussion}, with explicit threats-to-validity and limitations sections.
+\end{itemize}
+
+\section{Reflections}
+
+The most striking impression formed during the project was the asymmetry between the cost of building the segmented topology and the cost of building the flat topology. The two Compose files differ by approximately 50 lines of YAML, and the two firewall scripts by approximately 10 lines of \texttt{iptables} rules. The engineering effort required to obtain a 38.7-point improvement in reliability is therefore small in absolute terms; what is large is the cognitive effort required to reason about the right zone model in the first place. This is consistent with a recurring theme in security engineering, articulated forcefully by \textcite{Schneier}{2018}: the difficult parts of security are rarely the technical implementations and almost always the design and operational discipline that surround them.
+
+A second impression concerned the value of explicit measurement. Until the harness was running, the author held an informal expectation that segmentation would prevent ``most'' lateral movement; the result that a single \texttt{iptables} configuration prevents \emph{75\%} of internal reachability provided a far more concrete grounding for that intuition. A sceptical reviewer might reasonably argue with the choice of weights in the composite index, but cannot easily argue with the underlying eight-of-eight test pass rate or the six-of-eight reachability reduction, both of which are direct counts.
+
+\section{Future Work}
+
+Several extensions of the work are natural and feasible.
+
+\paragraph{Microsegmentation and zero-trust comparison.} The current testbed implements zone-level segmentation. A direct extension would add two additional configurations: a per-host microsegmentation configuration in which every container has its own network and the firewall enforces host-to-host policy, and a zero-trust configuration in which every flow is authenticated independently (for example, using mutual TLS or a service-mesh proxy such as Istio). The same metrics could be computed against all four configurations to produce a quantitative segmentation-maturity curve.
+
+\paragraph{Larger and more realistic services.} The testbed services are minimal (a static web page and TCP echoes). Replacing them with realistic open-source software --- a real SQL server, an SMB share, an LDAP directory --- would allow application-layer behaviour to be observed and would expose any second-order effects of segmentation on service operation.
+
+\paragraph{Concurrent load and DoS resilience.} The performance harness issues sequential requests. Extending it to use a concurrent HTTP load generator (for example, \texttt{wrk} or \texttt{vegeta}) and to include simple denial-of-service workloads would allow the firewall's capacity ceiling to be characterised, and would address the threat to validity raised in Section~6.4.
+
+\paragraph{Automated rule-set verification.} The same test harness that measures policy accuracy could be extended into a continuous-integration pipeline: every change to the firewall rule set or the Compose file would be tested automatically before deployment. This would directly address the maintenance challenge identified by \textcite{Wool}{2004} and would produce a tooling artefact of independent value to teaching laboratories.
+
+\paragraph{Defender-side observability.} The current harness measures only the attacker's experience. Adding a logging layer that captures dropped packets, accepted packets, and connection-rate spikes at the firewall would allow the defender's situational awareness \parencite{Endsley}{1995} to be evaluated alongside the attacker's success rate. A more sophisticated version of this extension would add an intrusion-detection sensor and a SIEM-style correlation pipeline.
+
+\paragraph{Threat-model expansion.} The current threat model excludes attacks against the firewall itself, against the host operating system, and against services at the application layer. A more general version of the work would extend the model to include each of these classes and, where appropriate, additional defensive controls (host-based intrusion detection, encrypted overlays, application-layer authentication). The methodology --- declarative topology, automated harness, transparent metrics --- generalises to any of these settings.
+
+\section{Closing Statement}
+
+Network segmentation has been a recommended control for at least three decades, and yet it remains widely under-deployed. One explanation, suggested by both vendor and analyst literature, is that practitioners lack a transparent, low-cost way of demonstrating its benefit to themselves. By building an open testbed, defining a small and explicit measurement methodology, and publishing the resulting numbers, this project contributes a small step toward closing that gap. The data presented here are unlikely to surprise an experienced security architect, but they may help a less experienced reader, a budget-holder, or an audit committee to understand --- in concrete numbers rather than abstract claims --- what segmentation buys, and how cheaply.

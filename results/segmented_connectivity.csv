@@ -1,0 +1,9 @@
+scenario,source,target,ip,protocol_port,expected,actual,pass_fail,response_time_ms
+segmented,seg-student,seg-web,10.10.40.10,TCP/80,ALLOW,ALLOW,PASS,110
+segmented,seg-student,seg-db,10.10.40.30,TCP/3306,BLOCK,BLOCK,PASS,1090
+segmented,seg-student,seg-admin,10.10.30.30,ICMP,BLOCK,BLOCK,PASS,1095
+segmented,seg-staff,seg-file,10.10.40.20,TCP/445,ALLOW,ALLOW,PASS,121
+segmented,seg-iot,seg-admin,10.10.30.30,ICMP,BLOCK,BLOCK,PASS,1103
+segmented,seg-guest,seg-db,10.10.40.30,TCP/3306,BLOCK,BLOCK,PASS,1100
+segmented,seg-attacker,seg-web,10.10.40.10,TCP/80,ALLOW,ALLOW,PASS,103
+segmented,seg-attacker,seg-db,10.10.40.30,TCP/3306,BLOCK,BLOCK,PASS,1092

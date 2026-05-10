@@ -1,0 +1,44 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2026-05-02 14:39 UTC
+Nmap scan report for dave-Lenovo-YOGA-530-14ARR (10.10.10.1)
+Host is up (0.000064s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 7E:A4:BC:10:AB:B0 (Unknown)
+
+Nmap scan report for seg-student2.student_net (10.10.10.11)
+Host is up (0.000036s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 2A:AD:24:45:B7:2B (Unknown)
+
+Nmap scan report for seg-fw.student_net (10.10.10.254)
+Host is up (0.000029s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: E2:20:89:55:45:B1 (Unknown)
+
+Nmap scan report for 30ccae0bce25 (10.10.10.10)
+Host is up (0.000074s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+
+
+[ ... 1530 additional address lines truncated for brevity. ]
+[ Every probe into 10.10.20.0/24, 10.10.30.0/24, 10.10.40.0/24,                ]
+[ 10.10.50.0/24 and 10.10.60.0/24 returned STATE=filtered, indicating that    ]
+[ the gateway firewall dropped the SYN before reaching any host. The full     ]
+[ scan output is included in the project repository.                          ]
+
+Nmap done: 1536 IP addresses (1284 hosts up) scanned in 183.84 seconds

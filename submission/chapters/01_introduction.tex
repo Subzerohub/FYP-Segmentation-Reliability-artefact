@@ -1,0 +1,54 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+\section{Background and Motivation}
+
+Modern organisations operate increasingly complex, interconnected networks that support a wide variety of users, devices, and services. Universities and colleges are a particularly demanding example: a single campus typically hosts students, staff, administrators, public-facing web services, internal databases, IoT devices such as printers and door controllers, and guest Wi-Fi traffic, all sharing a common infrastructure \parencite{NCSC}{2018}. When this infrastructure is built as a \emph{flat} network --- a single broadcast domain with little or no internal filtering --- a successful compromise of any one host can rapidly escalate into a network-wide breach. The annual \emph{Data Breach Investigations Report} \parencite{Verizon}{2023} consistently identifies lateral movement as a key enabler of high-impact intrusions, and the MITRE ATT\&CK framework dedicates an entire tactic category (\textit{TA0008 Lateral Movement}) to the techniques attackers use to traverse internal networks \parencite{MITRE}{2024}.
+
+Network segmentation is one of the oldest, simplest, and most widely recommended controls for constraining lateral movement \parencite{NIST SP~800-41}{2009}. By partitioning an infrastructure into smaller security zones and inserting policy enforcement points between them, defenders can ensure that the compromise of one host does not automatically grant access to every other host in the organisation. The principle is consistent with two foundational ideas in security engineering: \emph{least privilege} and \emph{defence in depth}, both of which date back to the seminal paper by \textcite{Saltzer and Schroeder}{1975}. More recently, segmentation has been re-cast as a building block of \emph{zero-trust architectures}, which assume that the internal network is already partially compromised and demand explicit authorisation for every flow \parencite{Rose et al.}{2020}.
+
+Despite the strength of this consensus, segmentation is still missing from many real-world networks, particularly in small organisations, education, healthcare, and operational technology environments. The 2017 NotPetya outbreak, in which a single infection at a Ukrainian software vendor cascaded through globally flat networks at Maersk and Merck and caused damages estimated at over US\$10 billion \parencite{Greenberg}{2019}, is the canonical illustration of what happens when segmentation is absent. Smaller incidents continue to demonstrate the same pattern: the UK Information Commissioner's Office, for example, fined the construction firm Interserve \pounds4.4~million in 2022 for security failings that included poor segmentation between user workstations and a database holding the personal data of 113{,}000 employees \parencite{ICO}{2022}.
+
+\section{Problem Statement}
+
+Although segmentation is widely \emph{recommended}, the published literature contains relatively little quantitative evidence that allows a practitioner to estimate the magnitude of the benefit before investing in deployment. Vendor white papers \parencite{VMware}{2021} and analyst reports \parencite{Gartner}{2019} make confident claims about reductions in ``blast radius'' and ``attack surface'', but rarely expose the underlying measurements or the methodology used to derive them. Academic work on cyber ranges and testbeds \parencite{Yamin, Katt and Gkioulos}{2020} has tended to focus on training and exercise scenarios rather than on controlled comparative experiments.
+
+For a final-year project in cybersecurity, this raises a tractable and useful research question:
+
+\begin{quote}
+\textit{How much does network segmentation, implemented at minimum cost using open-source tooling, reduce the lateral-movement attack surface available to an internal attacker, and what is the corresponding effect on legitimate end-user performance?}
+\end{quote}
+
+\section{Aim and Objectives}
+
+The \textbf{aim} of this project is to design, build, and evaluate a reproducible cyber range that allows the security and performance properties of flat and segmented network architectures to be measured and compared under identical workloads.
+
+To support this aim, the following \textbf{objectives} were defined at the outset:
+
+\begin{enumerate}[label=O\arabic*., leftmargin=*]
+    \item Survey the literature on network segmentation, lateral movement, and zero-trust architecture, and identify the metrics most commonly used to characterise segmentation effectiveness.
+    \item Design a representative ten-host campus topology containing user workstations, servers, IoT devices, and an external attacker.
+    \item Implement two functionally equivalent versions of this topology --- one flat, one segmented --- using Docker and the SEED Labs container image, with identical service workloads on each.
+    \item Define and implement a deterministic test harness that measures (a) firewall policy accuracy, (b) blast-radius exposure from a compromised internal host, (c) external attack-surface visibility, and (d) end-user HTTP performance under sustained load.
+    \item Execute the test harness against both architectures under controlled conditions, capture the raw evidence, and derive a composite \emph{reliability index} that combines security and performance into a single comparable score.
+    \item Discuss the practical and theoretical implications of the results for organisations operating flat networks, and identify the limitations and future-work extensions of the methodology.
+\end{enumerate}
+
+\section{Scope and Limitations}
+
+The project deliberately restricts itself to a small, well-defined set of design choices in order to make the comparison rigorous. The testbed is limited to ten hosts and an external attacker, which is sufficient to expose the qualitative behaviour of segmentation without overwhelming the available compute budget. The threat model assumes a single internally compromised host that attempts to discover and reach other internal hosts; advanced techniques such as kernel-level container escape, encrypted command-and-control, or data exfiltration over covert channels are out of scope. The controls evaluated are limited to network-layer policy enforced by a stateful Linux \texttt{iptables} firewall; host-based intrusion detection, application-layer authentication, and cryptographic controls are not implemented. A more thorough treatment of these dimensions is left as future work and is discussed in Chapter~\ref{ch:conclusion}.
+
+\section{Contributions}
+
+The principal contributions of this project are:
+
+\begin{itemize}[leftmargin=*]
+    \item A pair of fully reproducible Docker Compose topologies that recreate a representative campus network in flat and segmented form, requiring less than 4~GB of RAM and runnable on a single workstation.
+    \item A quantitative measurement methodology, expressed as a small set of shell and Python scripts, that produces deterministic CSV output suitable for both replication and statistical analysis.
+    \item Empirical evidence, presented in Chapter~\ref{ch:results}, that segmentation reduces blast-radius exposure from 100\% to 25\%, raises firewall policy accuracy from 50\% to 100\%, and raises a composite reliability index from 52.4 to 91.1 out of~100, while reducing average HTTP throughput by less than 5\% in absolute terms.
+    \item A discussion of the implications of these results for resource-constrained organisations, framed against current professional and regulatory guidance \parencite{NIST SP~800-207}{2020}; \parencite{NCSC}{2018}; \parencite{CIS}{2024}.
+\end{itemize}
+
+\section{Report Structure}
+
+The remainder of this report is organised as follows. \textbf{Chapter~\ref{ch:literature}} reviews the academic and professional literature on segmentation, firewalls, lateral movement, and cyber-range methodology, and identifies the gap that this work addresses. \textbf{Chapter~\ref{ch:methodology}} sets out the research approach, the threat model, the testbed design, and the evaluation framework in formal terms. \textbf{Chapter~\ref{ch:implementation}} documents the practical realisation of the testbed: the Dockerfile, the two Compose files, the firewall rule sets, and the test harness. \textbf{Chapter~\ref{ch:results}} presents the data collected from the experiments, including the figures generated by the plotting pipeline. \textbf{Chapter~\ref{ch:discussion}} interprets the results, discusses threats to validity, and relates the findings back to the literature. \textbf{Chapter~\ref{ch:conclusion}} concludes and outlines future work. The references and appendices follow.

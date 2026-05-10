@@ -1,0 +1,163 @@
+version: "3"
+
+x-common: &common
+  build: ../image_fyp
+  image: fyp-seed-net
+  tty: true
+  cap_add:
+    - ALL
+
+services:
+  fw:
+    <<: *common
+    container_name: seg-fw
+    privileged: true
+    sysctls:
+      - net.ipv4.ip_forward=1
+    volumes:
+      - ./firewall.sh:/firewall.sh
+    networks:
+      seg_external:
+        ipv4_address: 192.168.200.254
+      student_net:
+        ipv4_address: 10.10.10.254
+      staff_net:
+        ipv4_address: 10.10.20.254
+      admin_net:
+        ipv4_address: 10.10.30.254
+      server_net:
+        ipv4_address: 10.10.40.254
+      iot_net:
+        ipv4_address: 10.10.50.254
+      guest_net:
+        ipv4_address: 10.10.60.254
+    command: bash -c "chmod +x /firewall.sh && /firewall.sh && tail -f /dev/null"
+
+  attacker:
+    <<: *common
+    container_name: seg-attacker
+    depends_on:
+      - fw
+    networks:
+      seg_external:
+        ipv4_address: 192.168.200.100
+    command: bash -c "ip route add 10.10.0.0/16 via 192.168.200.254 || true; tail -f /dev/null"
+
+  student:
+    <<: *common
+    container_name: seg-student
+    networks:
+      student_net:
+        ipv4_address: 10.10.10.10
+    command: bash -c "ip route del default || true; ip route add default via 10.10.10.254; tail -f /dev/null"
+
+  student2:
+    <<: *common
+    container_name: seg-student2
+    networks:
+      student_net:
+        ipv4_address: 10.10.10.11
+    command: bash -c "ip route del default || true; ip route add default via 10.10.10.254; tail -f /dev/null"
+
+  staff:
+    <<: *common
+    container_name: seg-staff
+    networks:
+      staff_net:
+        ipv4_address: 10.10.20.20
+    command: bash -c "ip route del default || true; ip route add default via 10.10.20.254; tail -f /dev/null"
+
+  admin:
+    <<: *common
+    container_name: seg-admin
+    networks:
+      admin_net:
+        ipv4_address: 10.10.30.30
+    command: bash -c "ip route del default || true; ip route add default via 10.10.30.254; tail -f /dev/null"
+
+  web:
+    <<: *common
+    container_name: seg-web
+    networks:
+      server_net:
+        ipv4_address: 10.10.40.10
+    command: bash -c "ip route del default || true; ip route add default via 10.10.40.254; echo 'Segmented web server OK' > index.html; python3 -m http.server 80"
+
+  file:
+    <<: *common
+    container_name: seg-file
+    volumes:
+      - ../scripts:/scripts
+    networks:
+      server_net:
+        ipv4_address: 10.10.40.20
+    command: bash -c "ip route del default || true; ip route add default via 10.10.40.254; python3 /scripts/tcp_service.py 445 seg_file_server"
+
+  db:
+    <<: *common
+    container_name: seg-db
+    volumes:
+      - ../scripts:/scripts
+    networks:
+      server_net:
+        ipv4_address: 10.10.40.30
+    command: bash -c "ip route del default || true; ip route add default via 10.10.40.254; python3 /scripts/tcp_service.py 3306 seg_database"
+
+  iot:
+    <<: *common
+    container_name: seg-iot
+    networks:
+      iot_net:
+        ipv4_address: 10.10.50.50
+    command: bash -c "ip route del default || true; ip route add default via 10.10.50.254; tail -f /dev/null"
+
+  guest:
+    <<: *common
+    container_name: seg-guest
+    networks:
+      guest_net:
+        ipv4_address: 10.10.60.60
+    command: bash -c "ip route del default || true; ip route add default via 10.10.60.254; tail -f /dev/null"
+
+networks:
+  seg_external:
+    name: seg_external
+    ipam:
+      config:
+        - subnet: 192.168.200.0/24
+
+  student_net:
+    name: student_net
+    ipam:
+      config:
+        - subnet: 10.10.10.0/24
+
+  staff_net:
+    name: staff_net
+    ipam:
+      config:
+        - subnet: 10.10.20.0/24
+
+  admin_net:
+    name: admin_net
+    ipam:
+      config:
+        - subnet: 10.10.30.0/24
+
+  server_net:
+    name: server_net
+    ipam:
+      config:
+        - subnet: 10.10.40.0/24
+
+  iot_net:
+    name: iot_net
+    ipam:
+      config:
+        - subnet: 10.10.50.0/24
+
+  guest_net:
+    name: guest_net
+    ipam:
+      config:
+        - subnet: 10.10.60.0/24

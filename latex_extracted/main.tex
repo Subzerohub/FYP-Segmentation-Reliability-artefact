@@ -1,0 +1,180 @@
+\documentclass[12pt,a4paper,oneside]{report}
+
+% ================== PACKAGES ==================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+\usepackage[english]{babel}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black,
+    pdftitle={Evaluating the Security and Performance Trade-offs of Network Segmentation},
+    pdfauthor={FYP Author}
+}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage[final,protrusion=true,expansion=false]{microtype}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds, calc}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+
+% ================== LISTINGS STYLE ==================
+\definecolor{codebg}{RGB}{245,245,245}
+\definecolor{codekey}{RGB}{0,90,160}
+\definecolor{codecom}{RGB}{0,128,0}
+\definecolor{codestr}{RGB}{160,0,160}
+
+\lstdefinestyle{shellstyle}{
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{codebg},
+    keywordstyle=\color{codekey}\bfseries,
+    commentstyle=\color{codecom}\itshape,
+    stringstyle=\color{codestr},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    breakatwhitespace=true,
+    frame=single,
+    rulecolor=\color{black!30},
+    tabsize=2,
+    captionpos=b,
+    morekeywords={iptables,ip,docker,bash,nmap,ping,curl,nc,timeout},
+    morecomment=[l]{\#}
+}
+\lstdefinestyle{ymlstyle}{
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{codebg},
+    keywordstyle=\color{codekey}\bfseries,
+    commentstyle=\color{codecom}\itshape,
+    stringstyle=\color{codestr},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    breakatwhitespace=true,
+    frame=single,
+    rulecolor=\color{black!30},
+    tabsize=2,
+    captionpos=b,
+    morecomment=[l]{\#}
+}
+\lstdefinestyle{pystyle}{
+    language=Python,
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{codebg},
+    keywordstyle=\color{codekey}\bfseries,
+    commentstyle=\color{codecom}\itshape,
+    stringstyle=\color{codestr},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    breakatwhitespace=true,
+    frame=single,
+    rulecolor=\color{black!30},
+    tabsize=2,
+    captionpos=b
+}
+
+% ================== HEADERS / FOOTERS ==================
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ================== CHAPTER FORMATTING ==================
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
+
+% ================== CITATION COMMAND ==================
+% Custom commands so all in-text citations use Cite Them Right Harvard format:
+% (Author, Year) for parenthetical, Author (Year) for narrative.
+\newcommand{\textcite}[2]{#1 (#2)}
+\newcommand{\parencite}[2]{(#1, #2)}
+
+\begin{document}
+
+% ================== TITLE PAGE ==================
+\begin{titlepage}
+    \centering
+    \vspace*{1.5cm}
+    {\Large \textbf{Teesside University}\par}
+    \vspace{0.5cm}
+
+    {\Huge\bfseries Evaluating the Security and Performance Trade-offs of Network Segmentation\par}
+    \vspace{0.5cm}
+    {\Large A Comparative Study Using a Containerised Cyber Range\par}
+    \vspace{2.5cm}
+
+    {\Large\itshape DAVE EZEKIEL UDOFIA\par}
+    \vspace{0.4cm}
+    {\large Student ID: W9245182\par}
+    \vspace{2cm}
+
+    {\large A Final Year Project report submitted in partial fulfilment of the requirements for the degree of\par}
+    \vspace{0.3cm}
+    {\large\bfseries BSc (Hons) Cybersecurity\par}
+    \vspace{1cm}
+    {\large \today\par}
+\end{titlepage}
+
+
+% ================== ABSTRACT ==================
+\input{chapters/00_abstract.tex}
+
+% ================== ACKNOWLEDGEMENTS ==================
+
+% ================== TABLE OF CONTENTS ==================
+\tableofcontents
+\listoffigures
+\listoftables
+
+% ================== MAIN CHAPTERS ==================
+\input{chapters/01_introduction.tex}
+\input{chapters/02_literature.tex}
+\input{chapters/03_methodology.tex}
+\input{chapters/04_implementation.tex}
+\input{chapters/05_results.tex}
+\input{chapters/06_discussion.tex}
+\input{chapters/07_conclusion.tex}
+
+% ================== REFERENCES ==================
+\input{chapters/08_references.tex}
+
+% ================== APPENDICES ==================
+\appendix
+\input{appendices/A_dockerfiles.tex}
+\input{appendices/B_firewall_rules.tex}
+\input{appendices/C_test_scripts.tex}
+\input{appendices/D_helper_scripts.tex}
+\input{appendices/E_raw_data.tex}
+
+\end{document}

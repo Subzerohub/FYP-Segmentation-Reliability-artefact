@@ -1,0 +1,9 @@
+scenario,compromised_host,target,ip,test,actual
+segmented,seg-student,seg-student2,10.10.10.11,ICMP,REACHABLE
+segmented,seg-student,seg-staff,10.10.20.20,ICMP,BLOCKED
+segmented,seg-student,seg-admin,10.10.30.30,ICMP,BLOCKED
+segmented,seg-student,seg-web,10.10.40.10,TCP/80,REACHABLE
+segmented,seg-student,seg-file,10.10.40.20,TCP/445,BLOCKED
+segmented,seg-student,seg-db,10.10.40.30,TCP/3306,BLOCKED
+segmented,seg-student,seg-iot,10.10.50.50,ICMP,BLOCKED
+segmented,seg-student,seg-guest,10.10.60.60,ICMP,BLOCKED

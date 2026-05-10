@@ -1,0 +1,2764 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2026-05-09 16:56 UTC
+Nmap scan report for dave-Lenovo-YOGA-530-14ARR (10.10.10.1)
+Host is up (0.000077s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: B2:1E:C4:AE:93:09 (Unknown)
+
+Nmap scan report for seg-student2.student_net (10.10.10.11)
+Host is up (0.000038s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 8E:37:F6:C4:3F:52 (Unknown)
+
+Nmap scan report for seg-fw.student_net (10.10.10.254)
+Host is up (0.000027s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+MAC Address: 0E:A6:6E:FE:34:03 (Unknown)
+
+Nmap scan report for e98a9b74609b (10.10.10.10)
+Host is up (0.000091s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+
+Nmap scan report for 10.10.20.0
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for dave-Lenovo-YOGA-530-14ARR (10.10.20.1)
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.2
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.3
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.4
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.5
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.6
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.7
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.8
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.9
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.10
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.11
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.12
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.13
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.14
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.15
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.16
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.17
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.18
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.19
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.20
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.21
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.22
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.23
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.24
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.25
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.26
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.27
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.28
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.29
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.30
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.31
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.32
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.33
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.34
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.35
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.36
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.37
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.38
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.39
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.40
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.41
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.42
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.43
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.44
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.45
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.46
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.47
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.48
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.49
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.50
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.51
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.52
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.53
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.54
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.55
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.56
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.57
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.58
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.59
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.60
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.61
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.62
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.63
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.64
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.65
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.66
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.67
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.68
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.69
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.70
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.71
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.72
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.73
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.74
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.75
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.76
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.77
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.78
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.79
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.80
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.81
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.82
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.83
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.84
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.85
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.86
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.87
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.88
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.89
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.90
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.91
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.92
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.93
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.94
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.95
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.96
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.97
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.98
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.99
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.100
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.101
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.102
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.103
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.104
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.105
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.106
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.107
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.108
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.109
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.110
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.111
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.112
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.113
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.114
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.115
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.116
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.117
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.118
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.119
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.120
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.121
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.122
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.123
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.124
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.125
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.126
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.127
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.128
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.129
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.130
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.131
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.132
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.133
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.134
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.135
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.136
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.137
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.138
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.139
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.140
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.141
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.142
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.143
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.144
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.145
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.146
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.147
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.148
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.149
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.150
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.151
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.152
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.153
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.154
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.155
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.156
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.157
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.158
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.159
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.160
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.161
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.162
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.163
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.164
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.165
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.166
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.167
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.168
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.169
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.170
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.171
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.172
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.173
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.174
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.175
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.176
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.177
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.178
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.179
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.180
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.181
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.182
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.183
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.184
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.185
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.186
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.187
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.188
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.189
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.190
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.191
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.192
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.193
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.194
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.195
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.196
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.197
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.198
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.199
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.200
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.201
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.202
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.203
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.204
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.205
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.206
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.207
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.208
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.209
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.210
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.211
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.212
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.213
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.214
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.215
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.216
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.217
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.218
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.219
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.220
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.221
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.222
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.223
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.224
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.225
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.226
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.227
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.228
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.229
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.230
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.231
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.232
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.233
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.234
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.235
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.236
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.237
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.238
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.239
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.240
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.241
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.242
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.243
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.244
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.245
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.246
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.247
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.248
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.249
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.250
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.251
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.252
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.253
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.20.254
+Host is up (0.000069s latency).
+
+PORT     STATE  SERVICE
+80/tcp   closed http
+445/tcp  closed microsoft-ds
+3306/tcp closed mysql
+
+Nmap scan report for 10.10.20.255
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.0
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for dave-Lenovo-YOGA-530-14ARR (10.10.30.1)
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.2
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.3
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.4
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.5
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.6
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.7
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.8
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.9
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.10
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.11
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.12
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.13
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.14
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.15
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.16
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.17
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.18
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.19
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.20
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.21
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.22
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.23
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.24
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.25
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.26
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.27
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.28
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.29
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.30
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.31
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.32
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.33
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.34
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.35
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.36
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.37
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.38
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.39
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.40
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.41
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.42
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.43
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.44
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.45
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.46
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.47
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.48
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.49
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.50
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.51
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.52
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.53
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.54
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.55
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.56
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.57
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.58
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.59
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.60
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.61
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.62
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.63
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.64
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.65
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.66
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.67
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.68
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.69
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.70
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.71
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.72
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.73
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.74
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.75
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.76
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.77
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.78
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.79
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.80
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.81
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.82
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.83
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+
+Nmap scan report for 10.10.30.84
+Host is up.
+
+PORT     STATE    SERVICE
+80/tcp   filtered http
+445/tcp  filtered microsoft-ds
+3306/tcp filtered mysql
+

@@ -1,0 +1,9 @@
+scenario,compromised_host,target,ip,test,actual
+flat,flat-student,flat-student2,10.10.0.11,ICMP,REACHABLE
+flat,flat-student,flat-staff,10.10.0.20,ICMP,REACHABLE
+flat,flat-student,flat-admin,10.10.0.30,ICMP,REACHABLE
+flat,flat-student,flat-web,10.10.0.40,TCP/80,REACHABLE
+flat,flat-student,flat-file,10.10.0.50,TCP/445,REACHABLE
+flat,flat-student,flat-db,10.10.0.60,TCP/3306,REACHABLE
+flat,flat-student,flat-iot,10.10.0.70,ICMP,REACHABLE
+flat,flat-student,flat-guest,10.10.0.80,ICMP,REACHABLE
